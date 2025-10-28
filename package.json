@@ -1,0 +1,28 @@
+{
+  "name": "forum",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/shalev-s-company/forum#readme",
+  "bugs": {
+    "url": "https://github.com/shalev-s-company/forum/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shalev-s-company/forum.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "dependencies": {
+    "express": "^5.1.0",
+    "mongoose": "^8.19.2"
+  },
+  "devDependencies": {
+    "dotenv": "^17.2.3",
+    "nodemon": "^3.1.10"
+  }
+}
