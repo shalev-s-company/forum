@@ -1,4 +1,48 @@
-GET http://localhost:3000/subscribers
+// Test for Creating a post
+POST http://localhost:3000/posts
+Content-Type: application/json
 
+{
+    "title": "My test Second Post",
+    "author": "test@example.com",
+    "content": "This is the content of my seconddd post!"
+}
 
-GET http://localhost:3000/subscribers/
+###
+
+// Test for Creating a second post
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+    "title": "My Second Post",
+    "author": "another@user.com",
+    "content": "Hello world!"
+}
+
+###
+
+// Test for Getting all posts (should be sorted)
+GET http://localhost:3000/posts
+
+###
+
+// Test for Searching by title
+GET http://localhost:3000/posts/search?title=First
+
+###
+
+// Test for Getting posts by user
+GET http://localhost:3000/posts/user/test@example.com
+
+###
+
+// Test for Getting a post by ID
+// --- IMPORTANT: You must copy an ID from the GET or POST responses above ---
+GET http://localhost:3000/posts/6901cc872a88c255b16e2fb5
+
+###
+
+// Test for Deleting a post by ID
+// --- IMPORTANT: You must copy an ID from the GET or POST responses above ---
+DELETE http://localhost:3000/posts/6901cc872a88c255b16e2fb5
