@@ -1,0 +1,27 @@
+#version: '3.8' # Specifies the compose file version
+
+services:
+  # 1. Your Node.js Application Service
+  app:
+    build: .  # Build the image from the Dockerfile in the current directory
+    ports:
+      - "3000:3000" # Map port 3000 on your host to port 3000 in the container
+    environment:
+      # This is the crucial part. 
+      # We're telling your app to connect to the 'mongo' service
+      # on the default MongoDB port (27017) and use the 'forum' database.
+      DATABASE_URL: mongodb://mongo:27017/forum
+    depends_on:
+      - mongo # Tells Docker to start the 'mongo' service before the 'app' service
+
+  # 2. The MongoDB Service
+  mongo:
+    image: mongo:latest # Use the official 'mongo' image from Docker Hub
+    ports:
+      - "27017:27017" # (Optional) Lets you connect to the DB from your host machine
+    volumes:
+      - mongo-data:/data/db # Persists the database data
+
+# 3. Define the named volume for data persistence
+volumes:
+  mongo-data:
