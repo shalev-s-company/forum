@@ -18,3 +18,5 @@ app.use('/posts', postsRouter) // NEW: All post routes will be prefixed with /po
 
 
 app.listen(3000, () => console.log('Server Started'))
+
+// password = "hjkgwceigu234f874f32iu34g89"
