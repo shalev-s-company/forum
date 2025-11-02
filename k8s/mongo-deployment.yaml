@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongo # This label connects the Deployment to the Service
+  template:
+    metadata:
+      labels:
+        app: mongo # Pods will have this label
+    spec:
+      containers:
+      - name: mongo
+        image: mongo:latest # The image to use
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - name: mongo-data # The name of the volume to mount
+          mountPath: /data/db # At the standard Mongo data path
+      volumes:
+      - name: mongo-data # Must match the volumeMounts name
+        persistentVolumeClaim:
+          claimName: mongo-data # Use the PVC we defined in mongo-pvc.yaml

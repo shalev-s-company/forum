@@ -45,4 +45,4 @@ GET http://localhost:3000/posts/6901cc872a88c255b16e2fb5
 
 // Test for Deleting a post by ID
 // --- IMPORTANT: You must copy an ID from the GET or POST responses above ---
-DELETE http://localhost:3000/posts/6901cc872a88c255b16e2fb5
+DELETE http://localhost:3000/posts/690707bcfa35d189ef7fec3a

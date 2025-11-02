@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo # CRITICAL: This name must match the DATABASE_URL host
+spec:
+  selector:
+    app: mongo # Selects Pods with the 'app: mongo' label
+  ports:
+    - protocol: TCP
+      port: 27017 # The port the service listens on
+      targetPort: 27017 # The port on the pod to forward to

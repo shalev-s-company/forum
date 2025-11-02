@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forum-app # Connects this Deployment to the App's Service
+  template:
+    metadata:
+      labels:
+        app: forum-app # Pods will have this label
+    spec:
+      containers:
+      - name: app
+        image: forum-app:latest # The image we built in Step 2
+        imagePullPolicy: Never # CRITICAL: Tells K8s to use the local image, not pull from Docker Hub
+        ports:
+        - containerPort: 3000 # The port your app runs on (from your Dockerfile)
+        env:
+          - name: DATABASE_URL
+            value: "mongodb://mongo:27017/forum" # <-- CORRECT: 'value' is aligned with 'name'
